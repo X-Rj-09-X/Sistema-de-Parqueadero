@@ -17,6 +17,6 @@ public class Bicicleta extends Vehiculo{
     
     @Override
     public double calcularPago(long minutos){
-        return minutos * 0;
+        return 0;
     }
 }
