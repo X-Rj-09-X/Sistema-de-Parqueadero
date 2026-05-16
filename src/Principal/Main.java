@@ -8,7 +8,7 @@ package Principal;
  *
  * @author Ricardo J
  */
-public class SistemaDeParqueadero {
+public class Main {
 
     /**
      * @param args the command line arguments
