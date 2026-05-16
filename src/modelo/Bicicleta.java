@@ -8,19 +8,15 @@ package modelo;
  *
  * @author Ricardo J
  */
-public class Carro extends Vehiculo {
-
-    public Carro(String id, boolean discapacitado){
-        
-        super(id, "CARRO", discapacitado);
-        
+public class Bicicleta extends Vehiculo{
+    
+    public Bicicleta(String id, boolean discapacitado){
+        super(id, "BICI", discapacitado);
     }
+    
     
     @Override
     public double calcularPago(long minutos){
-        return minutos * 50;
+        return minutos * 0;
     }
-    
-  
-    
 }
