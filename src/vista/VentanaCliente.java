@@ -75,6 +75,11 @@ public class VentanaCliente extends JFrame{
         btnIngreso.setFocusPainted(false);
 
         panel.add(btnIngreso);
+        
+        btnIngreso.addActionListener(e -> {
+
+            new VentanaIngreso(controlador);
+        });
 
         //pago
         btnPago = new JButton("PAGO");
