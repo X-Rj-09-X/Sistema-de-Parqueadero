@@ -17,6 +17,8 @@ public class ControladorParqueadero {
     
     private Parqueadero parqueadero;
     private int contadorBicicletas;
+    private final String USUARIO_ADMIN = "admin";
+    private final String CONTRASENA_ADMIN = "123";
     
     
     public ControladorParqueadero(){
@@ -250,6 +252,17 @@ public class ControladorParqueadero {
         return "Pago realizado correctamente\n"
                 + "Tiempo: " + minutos + " minutos\n"
                 + "Valor pagado: $" + total;
+    }
+    
+    
+    public boolean validarAdmin(
+        String usuario,
+        String contrasena
+    ) {
+
+        return usuario.equals(USUARIO_ADMIN)
+                &&
+                contrasena.equals(CONTRASENA_ADMIN);
     }
     
     

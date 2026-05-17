@@ -79,6 +79,11 @@ public class VentanaPrincipal extends JFrame {
         btnAdmin.setBounds(150, 160, 180, 40);
 
         panel.add(btnAdmin);
+        
+        btnAdmin.addActionListener(e -> {
+
+            new VentanaLoginAdmin(controlador);
+        });
 
         //boton contabilidad
         btnContabilidad = new JButton("CONTABILIDAD");
