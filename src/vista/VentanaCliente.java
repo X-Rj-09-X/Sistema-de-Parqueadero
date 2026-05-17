@@ -111,6 +111,11 @@ public class VentanaCliente extends JFrame{
         btnSalida.setFocusPainted(false);
 
         panel.add(btnSalida);
+        
+        btnSalida.addActionListener(e -> {
+
+            new VentanaSalida(controlador);
+        });
 
         //volver
         btnVolver = new JButton("VOLVER");
