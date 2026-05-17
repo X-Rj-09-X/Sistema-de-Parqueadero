@@ -20,7 +20,7 @@ public abstract class Vehiculo {
     private LocalDateTime horaEntrada;
 
     public Vehiculo(String id, String tipo, boolean discapacitado) {
-        this.id = id;
+        this.id = id.toUpperCase();
         this.tipo = tipo;
         this.discapacitado = discapacitado;
         this.pagado = false;

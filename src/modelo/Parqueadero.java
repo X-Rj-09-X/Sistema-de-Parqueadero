@@ -42,4 +42,69 @@ public class Parqueadero {
         return false;
     }
     
+    public boolean agregarVehiculo(Vehiculo v){
+        
+        //filas para usar
+        int filaInicio = 0;
+        int filaFin = 0;
+        
+        //discapacitados
+        if(v.isDiscapacitado()){
+            
+            filaInicio = 0;
+            filaFin = 0;
+            
+        }
+        
+        //bicicletas
+        else if (v.getTipo().equals("BICICLETA")){
+            
+            filaInicio = 1;
+            filaFin = 1;
+            
+        }
+        
+        //motos
+        else if(v.getTipo().equals("MOTO")){
+            
+            filaInicio = 2;
+            filaFin = 3;
+            
+        }
+        
+        //carro
+        else{
+            
+            filaInicio = 4;
+            filaFin = 5;
+            
+        }
+        
+        //buscar cupo
+        for(int i = filaInicio; i <= filaFin; i++){
+            
+            for(int j = 0; j < 5; j++){
+                
+                //cupo libre
+                if(matriz[i][j] == null){
+                    
+                    //guardar en la matriz
+                    matriz[i][j] = v;
+                    
+                    //guardar posicion
+                    v.setFila(i);
+                    v.setColumna(j);
+                    
+                    //agregar a la lista
+                    listaVehiculos.add(v);
+                    
+                    return true;
+                }
+            }
+        }
+        
+        //no hay cupo
+        return false;
+    }
+    
 }
