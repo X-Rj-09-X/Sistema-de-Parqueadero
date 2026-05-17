@@ -10,8 +10,8 @@ package modelo;
  */
 public class Bicicleta extends Vehiculo{
     
-    public Bicicleta(String id, boolean discapacitado){
-        super(id, "BICI", discapacitado);
+    public Bicicleta(String id){
+        super(id, "BICI", false);
     }
     
     
