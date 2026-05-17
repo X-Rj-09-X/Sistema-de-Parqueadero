@@ -107,4 +107,18 @@ public class Parqueadero {
         return false;
     }
     
+    public Vehiculo buscarVehiculo(String id){
+        
+        for(Vehiculo v : listaVehiculos){
+            
+            if(v.getId().equalsIgnoreCase(id)){
+                return v;
+                
+            }
+            
+        }
+        
+        return null;
+    }
+    
 }

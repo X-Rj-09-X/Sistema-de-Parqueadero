@@ -117,6 +117,40 @@ public class ControladorParqueadero {
         
     }
     
+    public String salidaVehiculo(String id){
+        
+        //buscar vehiculo
+        Vehiculo v;
+        
+        v = parqueadero.buscarVehiculo(id);
+        
+        //validar que existe
+        if (v == null){
+            
+            return "Vehiculo no encontrado";
+            
+        }
+        
+        //validar pago
+        if (!v.isPagado()){
+            
+            //biciciletas no pagan
+            if(!v.getTipo().equals("BICI")){
+                
+                return "Debe realizar el pago";
+            }
+        }
+        
+        //liberar matriz
+        parqueadero.getMatriz()[v.getFila()][v.getColumna()] = null;
+        
+        //eliminar del array
+        parqueadero.getListaVehiculos().remove(v);
+        
+        return "Salida realizada correctamente";
+    }
+    
+    
     
     
 }
