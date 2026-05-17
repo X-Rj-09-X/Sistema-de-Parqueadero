@@ -19,6 +19,9 @@ public class ControladorParqueadero {
     private int contadorBicicletas;
     private final String USUARIO_ADMIN = "admin";
     private final String CONTRASENA_ADMIN = "123";
+    private final String USUARIO_CONTA = "conta";
+    private final String CONTRASENA_CONTA = "321";
+    
     
     
     public ControladorParqueadero(){
@@ -383,6 +386,16 @@ public class ControladorParqueadero {
                 .remove(v);
 
         return "Salida manual realizada";
+    }
+    
+    public boolean validarContabilidad(
+        String usuario,
+        String contrasena
+    ) {
+
+        return usuario.equals(USUARIO_CONTA)
+                &&
+                contrasena.equals(CONTRASENA_CONTA);
     }
     
     

@@ -91,6 +91,11 @@ public class VentanaPrincipal extends JFrame {
         btnContabilidad.setBounds(150, 220, 180, 40);
 
         panel.add(btnContabilidad);
+        
+        btnContabilidad.addActionListener(e -> {
+
+            new VentanaLoginConta(controlador);
+        });
 
         //boton salir
         btnSalir = new JButton("SALIR");
