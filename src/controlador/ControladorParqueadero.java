@@ -5,6 +5,8 @@
 package controlador;
 import modelo.*;
 import java.time.format.DateTimeFormatter;
+import java.time.Duration;
+import java.time.LocalDateTime;
 
 
 /**
@@ -148,6 +150,106 @@ public class ControladorParqueadero {
         parqueadero.getListaVehiculos().remove(v);
         
         return "Salida realizada correctamente";
+    }
+    
+    public String pagarVehiculo(
+
+        String id,
+        boolean empleado,
+        String codigoEmpleado,
+        double valorCompras
+    ){
+
+        // BUSCAR VEHICULO
+        Vehiculo v;
+
+        v = parqueadero.buscarVehiculo(id);
+
+        // VALIDAR EXISTENCIA
+        if (v == null) {
+
+            return "Vehículo no encontrado";
+        }
+
+        // BICICLETAS NO PAGAN
+        if (v.getTipo().equals("BICICLETA")) {
+
+            v.setPagado(true);
+
+            return "Las bicicletas no pagan";
+        }
+
+        // VALIDAR EMPLEADO
+        if (empleado) {
+
+            if (codigoEmpleado.equals("123")) {
+
+                v.setPagado(true);
+
+                return "Pago realizado: EMPLEADO GRATIS";
+            }
+        }
+
+        // CALCULAR TIEMPO
+        LocalDateTime ahora;
+
+        ahora = LocalDateTime.now();
+
+        Duration duracion;
+
+        duracion = Duration.between(
+                v.getHoraEntrada(),
+                ahora
+        );
+
+        long minutos;
+
+        minutos = duracion.toMinutes();
+
+        // CORTESIA 15 MINUTOS
+        minutos = minutos - 15;
+
+        if (minutos < 0) {
+
+            minutos = 0;
+        }
+
+        // CALCULAR PAGO
+        double total;
+
+        total = v.calcularPago(minutos);
+
+        // DESCUENTO 3 HORAS
+        if (valorCompras >= 100000) {
+
+            total = 0;
+        }
+
+        // DESCUENTO 25%
+        else if (valorCompras >= 50000) {
+
+            total = total * 0.75;
+        }
+
+        // MARCAR PAGADO
+        v.setPagado(true);
+
+        // ACUMULAR CONTABILIDAD
+        parqueadero.setTotalDia(
+                parqueadero.getTotalDia() + total
+        );
+
+        parqueadero.setTotalSemana(
+                parqueadero.getTotalSemana() + total
+        );
+
+        parqueadero.setTotalMes(
+                parqueadero.getTotalMes() + total
+        );
+
+        return "Pago realizado correctamente\n"
+                + "Tiempo: " + minutos + " minutos\n"
+                + "Valor pagado: $" + total;
     }
     
     

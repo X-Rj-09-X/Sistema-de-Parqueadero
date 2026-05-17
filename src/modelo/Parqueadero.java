@@ -13,6 +13,9 @@ public class Parqueadero {
     
     private Vehiculo[][] matriz;
     private ArrayList<Vehiculo> listaVehiculos;
+    private double totalDia;
+    private double totalSemana;
+    private double totalMes;
     
     public Parqueadero(){
         
@@ -119,6 +122,37 @@ public class Parqueadero {
         }
         
         return null;
+    }
+    
+    
+    public double getTotalDia() {
+        return totalDia;
+        
+    }   
+
+    public void setTotalDia(double totalDia) {
+        
+        this.totalDia = totalDia;
+    }
+
+    public double getTotalSemana() {
+        
+        return totalSemana;
+    }
+
+    public void setTotalSemana(double totalSemana) {
+        
+        this.totalSemana = totalSemana;
+    }
+
+    public double getTotalMes() {
+        
+        return totalMes;
+    }
+
+    public void setTotalMes(double totalMes) {
+        
+        this.totalMes = totalMes;
     }
     
 }
