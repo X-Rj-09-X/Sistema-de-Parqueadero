@@ -275,16 +275,17 @@ public class ControladorParqueadero {
         int columna
     ) {
 
-        // VALIDAR POSICION
+        // posicion validar
         if (parqueadero.getMatriz()[fila][columna] != null) {
 
             return "La posición ya está ocupada";
         }
 
-        // VEHICULO
+        //vehculo
+        
         Vehiculo v;
 
-        // CARRO
+        // carro
         if (tipo == 0) {
 
             id = id.toUpperCase();
@@ -303,7 +304,7 @@ public class ControladorParqueadero {
             );
         }
 
-        // MOTO
+        //moto
         else if (tipo == 1) {
 
             id = id.toUpperCase();
@@ -322,7 +323,7 @@ public class ControladorParqueadero {
             );
         }
 
-        // BICICLETA
+        //bicicleta
         else {
 
             int numero;
@@ -347,14 +348,41 @@ public class ControladorParqueadero {
             );
         }
 
-        // GUARDAR MATRIZ
+        //guarda matriz
         parqueadero.getMatriz()[fila][columna] = v;
 
-        // GUARDAR LISTA
+        // guarda lista
         parqueadero.getListaVehiculos().add(v);
 
-        // TICKET
+        // ticket
         return generarTicket(v);
+    }
+    
+    public String salidaManual(String id) {
+
+        id = id.toUpperCase();
+
+        //buscar
+        Vehiculo v;
+
+        v = parqueadero.buscarVehiculo(id);
+
+        //validar
+        if (v == null) {
+
+            return "Vehículo no encontrado";
+        }
+
+        //liberar matrioz
+        parqueadero.getMatriz()
+                [v.getFila()]
+                [v.getColumna()] = null;
+
+        //eliminar lista
+        parqueadero.getListaVehiculos()
+                .remove(v);
+
+        return "Salida manual realizada";
     }
     
     
