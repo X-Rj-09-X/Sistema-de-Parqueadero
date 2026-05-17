@@ -7,6 +7,7 @@ import modelo.*;
 import java.time.format.DateTimeFormatter;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import persistencia.ArchivoCSV;
 
 
 /**
@@ -27,6 +28,11 @@ public class ControladorParqueadero {
     public ControladorParqueadero(){
         
         parqueadero = new Parqueadero();
+        
+        parqueadero.setListaVehiculos(
+
+            ArchivoCSV.cargarVehiculos()
+        );
         
         contadorBicicletas = 1;
         
@@ -85,6 +91,11 @@ public class ControladorParqueadero {
         
         //agregar vehiculo
         boolean agregado = parqueadero.agregarVehiculo(v);
+        
+        ArchivoCSV.guardarVehiculos(
+
+                parqueadero.getListaVehiculos()
+        );
         
         //validar espacio
         if(!agregado){
@@ -154,6 +165,11 @@ public class ControladorParqueadero {
         //eliminar del array
         parqueadero.getListaVehiculos().remove(v);
         
+        ArchivoCSV.guardarVehiculos(
+
+                parqueadero.getListaVehiculos()
+        );
+
         return "Salida realizada correctamente";
     }
     
@@ -238,6 +254,10 @@ public class ControladorParqueadero {
 
         // MARCAR PAGADO
         v.setPagado(true);
+        ArchivoCSV.guardarVehiculos(
+
+                parqueadero.getListaVehiculos()
+        );
 
         // ACUMULAR CONTABILIDAD
         parqueadero.setTotalDia(
@@ -356,6 +376,10 @@ public class ControladorParqueadero {
 
         // guarda lista
         parqueadero.getListaVehiculos().add(v);
+        ArchivoCSV.guardarVehiculos(
+
+                parqueadero.getListaVehiculos()
+        );
 
         // ticket
         return generarTicket(v);
@@ -382,8 +406,14 @@ public class ControladorParqueadero {
                 [v.getColumna()] = null;
 
         //eliminar lista
-        parqueadero.getListaVehiculos()
-                .remove(v);
+        parqueadero.getListaVehiculos().remove(v);
+        
+        ArchivoCSV.guardarVehiculos(
+
+                parqueadero.getListaVehiculos()
+        );
+
+        
 
         return "Salida manual realizada";
     }
