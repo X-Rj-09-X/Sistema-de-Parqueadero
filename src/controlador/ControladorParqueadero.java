@@ -4,6 +4,7 @@
  */
 package controlador;
 import modelo.*;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -86,6 +87,34 @@ public class ControladorParqueadero {
         
         //generar el tiket
         return generarTicket(v);
+    }
+    
+    public String generarTicket(Vehiculo v){
+        
+        DateTimeFormatter formato;
+        
+        formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        
+        String ticket = "";
+        
+        ticket += "========== TICKET ==========\n";
+
+        ticket += "ID: " + v.getId() + "\n";
+
+        ticket += "Tipo: " + v.getTipo() + "\n";
+
+        ticket += "Fila: " + (v.getFila() + 1) + "\n";
+
+        ticket += "Columna: " + (v.getColumna() + 1) + "\n";
+
+        ticket += "Hora Entrada: ";
+
+        ticket += v.getHoraEntrada().format(formato) + "\n";
+
+        ticket += "============================";
+
+        return ticket;
+        
     }
     
     
