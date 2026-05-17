@@ -169,4 +169,13 @@ public class Parqueadero {
                 contadorBicicletas;
     }
     
+    
+    public void setListaVehiculos(
+
+        ArrayList<Vehiculo> listaVehiculos
+    ) {
+
+        this.listaVehiculos = listaVehiculos;
+    }
+    
 }
