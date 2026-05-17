@@ -266,6 +266,98 @@ public class ControladorParqueadero {
     }
     
     
+    public String ingresarVehiculoManual(
+
+        int tipo,
+        String id,
+        boolean discapacitado,
+        int fila,
+        int columna
+    ) {
+
+        // VALIDAR POSICION
+        if (parqueadero.getMatriz()[fila][columna] != null) {
+
+            return "La posición ya está ocupada";
+        }
+
+        // VEHICULO
+        Vehiculo v;
+
+        // CARRO
+        if (tipo == 0) {
+
+            id = id.toUpperCase();
+
+            // VALIDAR REPETIDO
+            if (parqueadero.buscarVehiculo(id) != null) {
+
+                return "La placa ya existe";
+            }
+
+            v = new Carro(
+                    id,
+                    fila,
+                    columna,
+                    discapacitado
+            );
+        }
+
+        // MOTO
+        else if (tipo == 1) {
+
+            id = id.toUpperCase();
+
+            // VALIDAR REPETIDO
+            if (parqueadero.buscarVehiculo(id) != null) {
+
+                return "La placa ya existe";
+            }
+
+            v = new Moto(
+                    id,
+                    fila,
+                    columna,
+                    discapacitado
+            );
+        }
+
+        // BICICLETA
+        else {
+
+            int numero;
+
+            numero =
+                    parqueadero.getContadorBicicletas();
+
+            numero++;
+
+            parqueadero.setContadorBicicletas(
+                    numero
+            );
+
+            String codigo;
+
+            codigo = String.format("%03d", numero);
+
+            v = new Bicicleta(
+                    codigo,
+                    fila,
+                    columna
+            );
+        }
+
+        // GUARDAR MATRIZ
+        parqueadero.getMatriz()[fila][columna] = v;
+
+        // GUARDAR LISTA
+        parqueadero.getListaVehiculos().add(v);
+
+        // TICKET
+        return generarTicket(v);
+    }
+    
+    
     
     
 }

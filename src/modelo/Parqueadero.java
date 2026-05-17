@@ -16,6 +16,7 @@ public class Parqueadero {
     private double totalDia;
     private double totalSemana;
     private double totalMes;
+    private int contadorBicicletas;
     
     public Parqueadero(){
         
@@ -153,6 +154,19 @@ public class Parqueadero {
     public void setTotalMes(double totalMes) {
         
         this.totalMes = totalMes;
+    }
+    
+    public int getContadorBicicletas() {
+
+    return contadorBicicletas;
+    }
+
+    public void setContadorBicicletas(
+            int contadorBicicletas
+    ) {
+
+        this.contadorBicicletas =
+                contadorBicicletas;
     }
     
 }
