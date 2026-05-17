@@ -93,6 +93,11 @@ public class VentanaCliente extends JFrame{
         btnPago.setFocusPainted(false);
 
         panel.add(btnPago);
+        
+        btnPago.addActionListener(e -> {
+
+            new VentanaPago(controlador);
+        });
 
         //salida
         btnSalida = new JButton("SALIDA");
