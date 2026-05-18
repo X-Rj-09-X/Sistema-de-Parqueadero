@@ -15,6 +15,22 @@ public class Moto extends Vehiculo{
         
     }
     
+    public Moto(
+            String id,
+            int fila,
+            int columna,
+            boolean discapacitado
+    ) {
+
+        super(
+                id,
+                "MOTO",
+                fila,
+                columna,
+                discapacitado
+        );
+    }
+    
     @Override
     public double calcularPago(long minutos){
         return minutos * 35;

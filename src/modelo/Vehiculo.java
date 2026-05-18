@@ -28,6 +28,29 @@ public abstract class Vehiculo {
         
     }
     
+    public Vehiculo(
+        String id,
+        String tipo,
+        int fila,
+        int columna,
+        boolean discapacitado
+    ) {
+
+        this.id = id.toUpperCase();
+
+        this.tipo = tipo;
+
+        this.fila = fila;
+
+        this.columna = columna;
+
+        this.discapacitado = discapacitado;
+
+        this.pagado = false;
+
+        this.horaEntrada = LocalDateTime.now();
+    }
+    
     public abstract double calcularPago(long minutos);
     
     

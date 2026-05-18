@@ -16,6 +16,17 @@ public class Carro extends Vehiculo {
         
     }
     
+    public Carro(
+            String id,
+            int fila,
+            int columna,
+            boolean discapacitado
+    ) {
+
+        super(id, "CARRO", fila, columna, discapacitado);
+        
+    }
+    
     @Override
     public double calcularPago(long minutos){
         return minutos * 50;

@@ -14,6 +14,21 @@ public class Bicicleta extends Vehiculo{
         super(id, "BICI", false);
     }
     
+    public Bicicleta(
+            String id,
+            int fila,
+            int columna
+    ) {
+
+        super(
+                id,
+                "BICI",
+                fila,
+                columna,
+                false
+        );
+    }
+    
     
     @Override
     public double calcularPago(long minutos){
